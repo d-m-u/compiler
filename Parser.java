@@ -5,12 +5,15 @@ import wci.intermediate.SymTab;
 
 // language-independent framework class to be implemented by language-specific subclasses
 
-public abstract class Parser
+public abstract class Parser implements MessageProducer
 {
-    protected static SymTab symTab;   //generated symbol table
+    protected static Symtab symtab;                  //generated symbol table
+    protected static MessageHandler messageHandler;  //message handler delegate
+
     static
     {
-        symTab = null;
+        symtab = null;
+        messageHandler = new MessageHandler();
     }
 
     protected Scanner scanner;  // scanner to be used with this parser
@@ -37,6 +40,22 @@ public abstract class Parser
     {
         return scanner.nextToken();
     }
+
+    public void addMessageListener(MessageListener listener)
+    {
+        messageHandler.addListener(listener);
+    }
+
+    public void removeMessageListener(MessageListener listener)
+    {
+        messageHandler.removeListener(listener);
+    }
+
+    public void sendMessage(Message message)
+    {
+        messageHandler.sendMessage(message);
+    }
+
 }
 
 // there will be only one symbol table in front end
