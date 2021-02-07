@@ -81,11 +81,17 @@ public class Source
     throws IOException
     {
         line = reader.readLine(); //null at end of source
-        currentPos = -1;
+        currentPos = 0;
 
         if (line != null)
         {
             ++lineNum;
+        }
+
+        if (line != null)
+        {
+        	sendMessage(new Message(SOURCE_LINE,
+        		new Object[] {lineNum, line}));
         }
     }
 
