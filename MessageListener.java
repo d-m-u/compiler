@@ -1,6 +1,6 @@
 package wci.message;
 
-public interface
+public interface MessageListener
 {
 	public void messageReceived(Message message);
 
