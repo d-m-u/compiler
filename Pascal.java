@@ -58,6 +58,47 @@ public static void main(String args[])
         {
             flags += args[i].substring(1);
         }
-        //here
+        if (i < args.length)
+        {
+            String path = args[i];
+            new Pascal(operation, path, flags);
+        }
+        else
+        {
+            throw new Exception();
+        }
+    }
+    catch (Exception ex)
+    {
+        System.out.println(USAGE);
     }
 }
+
+private static final String SOURCE_LINE_FORMAT = "%03d %s";
+
+private class SourceMessageListener implements MessageListener
+{
+    public void messageReceived(Message message)
+    {
+        MessageType type = message.getType();
+        Object body[] = (Object []) message.getBody();
+
+        switch (type)
+        {
+        case SOURCE_LINE:
+        {
+            int lineNumber = (Integer) body[0];
+            String lineText = (String) body[1];
+
+            System.out.println(String.format(SOURCE_LINE_FORMAT, lineNumber, lineText));
+
+            break;
+        }
+        }
+    }
+}
+
+private static final String PARSER_SUMMARY_FORMAT =
+    "\n%,20d source lines." +
+    "\n%,20d syntax errors." +
+    //here
