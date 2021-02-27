@@ -101,4 +101,41 @@ private class SourceMessageListener implements MessageListener
 private static final String PARSER_SUMMARY_FORMAT =
     "\n%,20d source lines." +
     "\n%,20d syntax errors." +
+    "\n%,20.2f seconds total parsing time. \n";
+
+private class ParserMessageListener implements MessageListener
+{
+    public void messageReceived(Message message)
+    {
+        MessageType type = message.getType();
+
+        switch (type)
+        {
+        case PARSER_SUMMARY:
+        {
+            Number body[] = (Number[]) message.getBody();
+            int statementCount = (Integer) body[0];
+            int syntaxErrors = (Integer) body[1];
+            float elapsedTime = (Float) body[2];
+
+            System.out.printf(PARSER_SUMMARY_FORMAT, statementCount, syntaxErrors, elapsedTime);
+
+            break;
+        }
+        }
+    }
+}
+
+private static final String INTERPRETER_SUMMARY_FORMAT =
+    "\n%,20d statements executed." +
+    "\n%,20d runtime errors." +
+    "\n%,20.2f seconds total execution time. \n";
+
+private static final String COMPILER_SUMMARY_FORMAT =
+    "\n%,20d instructions generated." +
+    "\n%,20.2f seconds total code generation time.\n";
+
+private class BackendMessageListener implements MessageListener
+{
     //here
+}
