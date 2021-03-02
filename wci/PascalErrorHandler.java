@@ -23,7 +23,7 @@ public class PascalErrorHandler
 			abortTranslation(TOO_MANY_ERRORS, parser);
 		}
 	}
-	pulic void abortTranslation(PascalErrorCode errorCode, Parser parser)
+	public void abortTranslation(PascalErrorCode errorCode, Parser parser)
 	{
 		String fatalText = "FATAL ERROR: " + errorCode.toString();
 		parser.sendMessage(new Message(SYNTAX_ERROR, new Object[] {0, 0, "", fatalText}));
