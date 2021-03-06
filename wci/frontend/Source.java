@@ -40,7 +40,7 @@ public class Source
         //end of line
         else if ((currentPos == -1) || (currentPos == line.length()))
         {
-            reutrn EOL;
+            return EOL;
         }
 
         //need to read the next line?
