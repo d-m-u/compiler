@@ -71,7 +71,7 @@ public class Source
         currentChar();
         if(line == null)
         {
-            return EOR;
+            return EOF;
         }
         int nextPos = currentPos + 1;
         return netPos < line.length() ? line.charAt(nextPos) : EOL;

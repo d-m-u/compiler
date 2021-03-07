@@ -15,10 +15,10 @@ public class PascalParserTD extends Parser
     throws Exception
     {
         Token token;
-        long startTime = System.currentTimeMissis();
+        long startTime = System.currentTimeMillis();
 
         while (!((token = nextToken()) instanceof EofToken)) {}
-        float elapsedTime = (System.currentTimeMissis() - startTime) / 1000f;
+        float elapsedTime = (System.currentTimeMillis() - startTime) / 1000f;
         sendMessage(new Message(PARSER_SUMMARY,
                                 new Number[] {token.getLineNumber(),
                                               getErrorCount(),
