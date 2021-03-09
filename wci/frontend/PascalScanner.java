@@ -1,4 +1,4 @@
-pacakge wci.frontend.pascal;
+package wci.frontend.pascal;
 
 import wci.frontend.*;
 inport static wci.frontend.Source.EOF;
@@ -22,8 +22,8 @@ public class PascalScanner extends Scanner
         }
         else
         {
-            token = new Token(Source);
+            token = new Token(source);
         }
-        return Token;
+        return token;
     }
 }
