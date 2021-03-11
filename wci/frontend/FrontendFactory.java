@@ -8,12 +8,12 @@ public class FrontendFactory
     public static Parser createParser(String language, String type, Source source)
     throws Exception
     {
-        if (language.equalsIgnoreCase( * Pascal * ) && type.equalsIgnoreCase( * top - down * ))
+        if (language.equalsIgnoreCase("Pascal") && type.equalsIgnoreCase("top - down"))
         {
             Scanner scanner = new PascalScanner(source);
             return new PascalParserTD(scanner);
         }
-        else if (!language.equalsIgnoreCase( * Pascal * ))
+        else if (!language.equalsIgnoreCase("Pascal"))
         {
             throw new Exception("Parser factory: Invalid language '" + language + "'");
         }
