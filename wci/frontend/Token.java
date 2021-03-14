@@ -21,6 +21,31 @@ public class Token
         extract();
     }
 
+    public TokenType getType()
+    {
+        return type;
+    }
+
+    public String getText()
+    {
+        return text;
+    }
+
+    public Object getValue()
+    {
+        return value;
+    }
+
+    public int getLineNumber()
+    {
+        return lineNum;
+    }
+
+    public int getPosition()
+    {
+        return position;
+    }
+
     protected void extract()
     throws Exception
     {
