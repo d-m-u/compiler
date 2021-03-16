@@ -17,7 +17,25 @@ public class PascalParserTD extends Parser
         Token token;
         long startTime = System.currentTimeMillis();
 
-        while (!((token = nextToken()) instanceof EofToken)) {}
+        try {
+
+        while (!((token = nextToken()) instanceof EofToken)) {
+            TokenType tokenType = token.getType();
+
+            if (tokenType != ERROR)
+            {
+                sendMessage(new Message(TOKEN),
+                    new Object[] (token.getLineNumber(),
+                        token.getPosition(),
+                        tokenType,
+                        token.getText(),
+                        token.getValue()}));
+}
+else {
+    errorHandler.flag(toke, (PascalErrorCode) token.getValue(), this);
+}
+        }
+
         float elapsedTime = (System.currentTimeMillis() - startTime) / 1000f;
         sendMessage(new Message(PARSER_SUMMARY,
                                 new Number[] {token.getLineNumber(),
@@ -25,8 +43,12 @@ public class PascalParserTD extends Parser
                                               elapsedTime
                                              }));
     }
-    public int getErrorCount()
+    catch (java.io.IOException ex)
     {
-        return 0;
+        errorHandler.abortTranslation(IO_ERROR, this);
     }
 }
+    public int getErrorCount()
+    {
+        return errorHandler.getErrorCount;
+    }
