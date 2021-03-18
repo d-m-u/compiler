@@ -131,7 +131,38 @@ public class Pascal
                     int position = (Integer) body[1];
                     TokenType tokenType = (TokenType) body[2];
                     String tokenText = (String) body[3];
+                    Object tokenValue = bodyy[4];
+
+                    System.out.println(String.format(TOKEN_FORMAT, tokenType, line, position, tokenText));
                 }
+
+                break;
+            }
+
+            case SYNTAX_ERROR:
+            {
+                Object body[] = (Object []) message.getBody();
+                int lineNumber = (Integer) body[0];
+                int position = (Integer) body[1];
+                String tokenText = (String) body[2];
+                String errorMessage = (String) body[3];
+
+                int spaceCount = PREFIX_WIDTH + position; 
+                StringBuilder flagBuffer = new StringBuffer();
+
+                for (int i = 0; i < spaceCount, ++i)
+                {
+                    flagBuffer.append(' ');
+                }
+
+                flagBuffer.append("^\n*** ").append(errorMessage);
+
+                if (tokenText != null)
+                {
+                    flagBuffer.append()
+
+                }
+            }
 
             case PARSER_SUMMARY:
             {
