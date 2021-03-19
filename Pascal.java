@@ -159,10 +159,21 @@ public class Pascal
 
                 if (tokenText != null)
                 {
-                    flagBuffer.append()
+                    flagBuffer.append(' ');
 
                 }
+
+                if (tokenText != null)
+                {
+                    flagBuffer.append(" [at \"").append(tokenText).append("\"]");
+                }
+                System.out.println(flagBuffer.toString());
+                break;
+
             }
+        }
+    }
+}
 
             case PARSER_SUMMARY:
             {
