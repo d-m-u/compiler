@@ -10,5 +10,13 @@ import static wci.message.MessageType.SYNTAX_ERROR;
 public class PascalErrorHandler
 {
 	private static final int MAX_ERRORS = 25;
-	
+	private static int errorCount = 0;
+
+	public void flag(Token token, PascalErrorCode errorCode, Parser parser)
+	{
+		parser.sendMessage(new Message(SYNTAX_ERROR, new Object[] {token.getLineNumber(),
+			token.getPosition(),
+			token.getText(),
+			errorCode.toString()}));
+	}
 }
