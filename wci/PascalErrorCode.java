@@ -33,23 +33,62 @@ public enum PascalErrorCode {
   MISSING_EQUALS("Missing ="),
   MISSING_FOR_CONTROL("Invalid FOR control variable"),
   MISSING_IDENTIFIER("Missing identifier"),
-  MISSING_LEFT_BRACKET(""),
-  MISSING_OF(""),
-  MISSING_PERIOD(""),
-  MISSING_PROGRAM(""),
-  MISSING_RIGHT_BRACKET(""),
-  MISSING_RIGHT_PAREN(""),
-  MISSING_SEMICOLON(""),
-  MISSING_THEN(""),
-  (""),
-  (""),
-  (""),
-  (""),
-  (""),
-  (""),
-  (""),
-  (""),
-  (""),
+  MISSING_LEFT_BRACKET("Missing ["),
+  MISSING_OF("Missing OF"),
+  MISSING_PERIOD("Missing ."),
+  MISSING_PROGRAM("Missing PROGRAM"),
+  MISSING_RIGHT_BRACKET("Missing ]"),
+  MISSING_RIGHT_PAREN("Missing )"),
+  MISSING_SEMICOLON("Missing ;"),
+  MISSING_THEN("Missing THEN"),
+  MISSING_TO_DOWNTO("Missing TO or DOWNTO"),
+  MISSING_UNTIL("Missing UNTIL"),
+  MISSING_VARIABLE("Missing variable"),
+  CASE_CONSTANT_REUSED("CASE constant reused"),
+  NOT_CONSTANT_INDENTIFIER("Not a constant identifier"),
+  NOT_RECORD_VARIABLE("Not a record variable"),
+  NOT_TYPE_VARIABLE("Not a type identifier"),
+  RANGE_INTEGER("Integer literal out of range"),
+  RANGE_REAL("Real literal out of range"),
+  STACK_OVERFLOW("Stack overflow"),
+  TOO_MANY_LEVELS("Nesting level too deep"),
+  TOO_MANY_SUBSCRIPTS("Too many subscripts"),
+  UNEXPECTED_EOF("Unexpected end of file"),
+  UNEXPECTED_TOKEN("Unexpected token"),
+  UNIMPLEMENTED("Unimplemented feature"),
+  UNRECOGNIZABLE("Unrecognizable input"),
+  WRONG_NUMBER_OF_PARAMS("Wrong number of actual parameters"),
+  
+// fatal errors
+  IO_ERROR(-101, "Object I/O error"),
+  TOO_MANY_ERRORS(-102, "Too many syntax errors");
+
+  private int status; 
+  private String message; 
+
+  PascalErrorCode(String message)
+  {
+  	this.status = 0; 
+  	this.message = message;
+  }
+
+  PascalErrorCode(int status, String message)
+  {
+  	this.status = status; 
+  	this.message = message; 
+  }
+
+  public int getStatus()
+  {
+  	return status;
+  }
+
+  {
+  	return message;
+  }
+}
+
+
   (""),
   (""),
   (""),
